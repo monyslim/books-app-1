@@ -22,6 +22,6 @@ jobs:
         
         - name: "Push image to DockerHub"
           run: |
-            docker push monyslim/books-app:1
+            docker push monyslim/books-app:2
 
             
