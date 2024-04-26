@@ -29,5 +29,19 @@ jobs:
         - name: "Push image to DockerHub"
           run: |
             docker push monyslim/books-app:${{ env.APP_VERSION }}
+        
+        ## This action is to send email notification for the randomly generated app version numbers
+        - name: "Send email notification for the latest version of the deployment"
+          uses: dawidd6/action-send-mail@v3
+          with:
+            username: prcenturionboy@gmail.com
+            password: ${{ secrets.EMAIL_PASSWORD }}
+            server_address: smtp.gmail.com
+            server_port: 465
+            secure: true
+            subject: "New Docker Image Version for Deployment"
+            to: "prcenturionboy@gmail.com"
+            from: "prcenturionboy@gmail.com"
+            body: "New image build version: ${{ env.APP_VERSION }}"
 
             
