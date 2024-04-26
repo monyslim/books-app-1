@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: books-app-v1
-        image: monyslim/books-app:30503
+        image: monyslim/books-app:10131
         ports:
         - containerPort: 80
 ---
