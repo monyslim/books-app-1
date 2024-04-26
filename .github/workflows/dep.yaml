@@ -9,10 +9,16 @@ jobs:
         steps:
         - name: "Checkout repo"
           uses: actions/checkout@v2
+        
+        # This action is to print random generated object numbers
+        - name: "Print the Github Object version number"
+          run: |
+            echo "APP_VERSION=${RANDOM}" >> $GITHUB_ENV
 
         - name: "Build the image"
           run: |
-            docker build -t monyslim/books-app:2 .
+            echo ${{ env.APP_VERSION }}
+            docker build -t monyslim/books-app:${{ env.APP_VERSION }} .
 
         - name: "Login to DockerHub"
           uses: docker/login-action@v1
@@ -22,6 +28,6 @@ jobs:
         
         - name: "Push image to DockerHub"
           run: |
-            docker push monyslim/books-app:2
+            docker push monyslim/books-app:${{ env.APP_VERSION }}
 
             
