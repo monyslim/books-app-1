@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: books-app-dep
+  name: books-app-dep-canary
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
-      app: books-app-dep
+      app: books-app-dep-canary
   template:
     metadata:
       labels:
-        app: books-app-dep
+        app: books-app-dep-canary
     spec:
       containers:
-      - name: books-app-v1
-        image: monyslim/books-app:8344
+      - name: books-app-v1-canary
+        image:
         ports:
         - containerPort: 80
 ---

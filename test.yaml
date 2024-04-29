@@ -3,7 +3,6 @@ kind: Deployment
 metadata:
   name: books-app-dep
 spec:
-  replicas: 3
   selector:
     matchLabels:
       app: books-app-dep
