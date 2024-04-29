@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: books-app-dep-canary
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: books-app-dep-canary
@@ -13,8 +13,8 @@ spec:
         app: books-app-dep-canary
     spec:
       containers:
-      - name: books-app-v1-canary
-        image: monyslim/books-app:12700
+      - name: books-app-v1
+        image: monyslim/books-app:21603
         ports:
         - containerPort: 80
 ---
@@ -25,7 +25,7 @@ metadata:
 spec:
   type: LoadBalancer
   selector:
-    app: books-app-dep
+    app: books-app-dep-canary
   ports:
   - port: 8081
     targetPort: 80
